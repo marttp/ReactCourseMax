@@ -9,7 +9,9 @@ export default class Modal extends Component{
         // console.log(this.props.show)
         // console.log(nextProps.show)
         // If props incoming from parent is different. Then updated it
-        return nextProps.show !== this.props.show
+        // console.log(nextProps.children)
+        // console.log(this.props.children)
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children
     }
 
     componentWillUpdate(){
