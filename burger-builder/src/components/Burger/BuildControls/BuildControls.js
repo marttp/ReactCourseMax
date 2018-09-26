@@ -1,37 +1,31 @@
 import React from 'react';
-import Classes from './BuildControls.css';
+
+import classes from './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
 
 const controls = [
-    { label: 'Bacon', type: 'bacon'},
-    { label: 'Meat', type: 'meat'},
-    { label: 'Cheese', type: 'cheese'},
-    { label: 'Salad', type: 'salad'},
-]
+    { label: 'Salad', type: 'salad' },
+    { label: 'Bacon', type: 'bacon' },
+    { label: 'Cheese', type: 'cheese' },
+    { label: 'Meat', type: 'meat' },
+];
 
-const BuildControls = (props) => {
-    return (
-        <div className={Classes.BuildControls}>
-            <p>Current Price : <strong>{props.prices.toFixed(2)} $</strong></p>
-            { controls.map(ctrl => (
-                <BuildControl 
-                    key={ctrl.label} 
-                    label={ctrl.label}
-                    //Receive from parent and send argument to reference
-                    added={() => props.ingredientAdded(ctrl.type)}
-                    removed={() => props.ingredientRemoved(ctrl.type)}
-                    //recieve props and filter by type
-                    // T or F
-                    disabled={props.disabled[ctrl.type]}/>
-            ))}
-            <button 
-                className={Classes.OrderButton}
-                disabled={!props.purchasable}
-                onClick={props.ordered}>
-                ORDER NOW
-            </button>
-        </div>
-    );
-};
+const buildControls = (props) => (
+    <div className={classes.BuildControls}>
+        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
+        {controls.map(ctrl => (
+            <BuildControl 
+                key={ctrl.label} 
+                label={ctrl.label}
+                added={() => props.ingredientAdded(ctrl.type)}
+                removed={() => props.ingredientRemoved(ctrl.type)}
+                disabled={props.disabled[ctrl.type]} />
+        ))}
+        <button 
+            className={classes.OrderButton}
+            disabled={!props.purchasable}
+            onClick={props.ordered}>ORDER NOW</button>
+    </div>
+);
 
-export default BuildControls;
+export default buildControls;
