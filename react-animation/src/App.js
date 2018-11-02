@@ -81,7 +81,9 @@ class App extends Component {
 
         <button className="Button" onClick={this.showModal}>Open Modal</button>
         <h3>Animating Lists</h3>
+
         <List />
+
       </div>
     );
   }
